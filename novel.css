@@ -518,6 +518,8 @@ body[data-lang="en"] .messageText {
     .title,
     .sub-title {
         font-size: 1.8rem;
+        color: #1A0F0A;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     body[data-lang="en"] .title,
@@ -527,6 +529,8 @@ body[data-lang="en"] .messageText {
 
     .span-text {
         font-size: 1.3rem;
+        color: #1A0F0A;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     body[data-lang="en"] .span-text {
@@ -593,8 +597,8 @@ body[data-lang="en"] .messageText {
     }
 
     .messageText {
-        font-size: 1.4rem;
-        margin-bottom: 5vh;
+        font-size: 1.3rem;
+        margin-bottom: 14vh;
     }
 
     body[data-lang="en"] .messageText {

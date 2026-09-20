@@ -584,6 +584,22 @@ body[data-lang="en"] .messageText{
         padding: 8px 20px;
         margin-top: 20px;
     }
+
+    /* Make the entire quote card container dead to all touch/swipe events */
+    .quoteCard,
+    .quoteCard .swiper-wrapper,
+    .quote.swiper-slide {
+        pointer-events: none !important;
+        touch-action: pan-y !important;
+        /* Forces normal vertical page scrolling */
+    }
+
+    /* Keep ONLY the navigation arrows and pagination dots interactive */
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
+        pointer-events: auto !important;
+    }
 }
 
 /* Small Mobile Phones (<= 480px) */

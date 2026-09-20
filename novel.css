@@ -1,0 +1,664 @@
+html {
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+div,
+h1,
+h2,
+p,
+span {
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari support */
+    cursor: default;
+}
+
+/* Ensure interactive elements keep the pointer cursor */
+button,
+#cardBtn,
+#resetBtn {
+    cursor: pointer;
+}
+
+/* Language Switcher Styling */
+.lang-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+#langSwitcher {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(94, 80, 58, 0.4);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-family: 'MyCustomFont1', sans-serif;
+    font-size: 1.1rem;
+    color: #2E1C12;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#langSwitcher:hover {
+    background: linear-gradient(180deg, #be8e456d 0%, #be8e456d 100%);
+}
+
+body {
+    background-image: linear-gradient(135deg, #efe2c659 0%, #7d8f6379 50%, #c8874243 100%),
+        url('./images/background-leaves.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: safe center;
+    gap: 1rem;
+    position: relative;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+
+}
+
+@font-face {
+    font-family: 'MyCustomFont1';
+    src: url(./font/U-Moe-Handwritten-Font.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title {
+    font-family: 'MyCustomFont1';
+    font-size: 3rem;
+    color: #1A0F0A;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+body[data-lang="en"] .title {
+    font-size: 2.4rem;
+    /* Reduced from 3rem */
+}
+
+.sub-title {
+    font-family: 'MyCustomFont1';
+    font-size: 3rem;
+    color: #1A0F0A;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+body[data-lang="en"] .sub-title {
+    font-size: 2.4rem;
+    /* Reduced from 3rem */
+}
+
+.span-text {
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 2rem;
+    color: #1A0F0A;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+body[data-lang="en"] .span-text {
+    font-size: 1.4rem;
+}
+
+.cardBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    z-index: 20;
+    visibility: visible;
+}
+
+#cardBtn {
+    width: 150px;
+    height: 60px;
+    display: block;
+    margin: 30px auto 10px auto;
+    cursor: pointer;
+    padding: 10px 24px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 10px 24px rgba(237, 233, 232, 0.25);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    background-color: transparent;
+    color: transparent;
+}
+
+
+.btnText {
+    font-family: 'MyCustomFont1';
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
+    font-size: 2rem;
+    font-weight: 500;
+    color: #2E1C12;
+}
+
+body[data-lang="en"] .btnText {
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+#cardBtn:hover {
+    transform: scale(1.02);
+    background: linear-gradient(180deg, #be8e456d 0%, #be8e456d 100%);
+    border: 2px solid #5E503A;
+    font-weight: 900;
+    color: #492d00;
+}
+
+.welcome-block {
+    position: relative;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    border-radius: 24px;
+    padding: 20px 20px;
+
+    background: rgba(253, 248, 237, 0.05);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(176, 145, 145, 0.05),
+        0 0 25px rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid #cfcdcde3;
+}
+
+.quoteCard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    backdrop-filter: blur(2px);
+    border-radius: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-y !important;
+    user-select: none;
+
+    /* Hide Scrollbar (Firefox, IE, Edge) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.quoteCard::-webkit-scrollbar {
+    height: 6px;
+}
+
+.quoteCard::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.quoteCard::-webkit-scrollbar-thumb {
+    background: rgba(46, 28, 18, 0.3);
+    border-radius: 10px;
+}
+
+.quoteCard.swiper {
+    width: 740px !important;
+    max-width: 90vw !important;
+    margin-top: 14vh;
+    position: relative;
+
+    border-radius: 24px;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+
+/* Force horizontal wrapper layout */
+.quoteCard .swiper-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+
+}
+
+/* Individual Slide Formatting */
+.quote.swiper-slide {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(35, 45, 28, 0.65) 0%,
+            rgba(18, 24, 15, 0.75) 100%) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px 0 rgba(20, 25, 15, 0.25),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* REMOVED: flex: 0 0 320px; and width: 450px; */
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    flex-shrink: 0 !important;
+    min-height: 560px;
+    padding: 30px 45px 35px 45px;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+/* Swiper Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff !important;
+    /* Bark theme color */
+    z-index: 25 !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+/* Adjust size of the arrow icon itself */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+/* Position arrows safely inside the card padding */
+.swiper-button-next {
+    right: 8px !important;
+}
+
+.swiper-button-prev {
+    left: 8px !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: transparent;
+    transform: scale(1.1);
+}
+
+/* Pagination Dots */
+.swiper-pagination {
+    bottom: 8px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.4;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.quote {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(125, 143, 99, 0.35) 0%,
+            rgba(50, 59, 40, 0.45) 100%);
+
+    /* Frosted Blur Effect */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Safari support */
+
+    /* Glass Edge Reflection & Elevation */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px 0 rgba(20, 25, 15, 0.25),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+    display: flex;
+    flex: 0 0 320px;
+    /* Fixed card width (adjust as needed, e.g. 80vw for mobile) */
+    scroll-snap-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 20px;
+    width: 450px;
+    min-height: 350px;
+    gap: 12px;
+}
+
+.quote span {
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #FFE6A7 !important;
+    /* Golden Amber */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+}
+
+body[data-lang="en"] .quote span {
+    font-size: 1.2rem;
+}
+
+.quote-text {
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    color: #FFFDF5 !important;
+    /* Soft Ivory White */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.9) !important;
+    padding: 0px 10px;
+}
+
+body[data-lang="en"] .quote-text {
+    font-size: 1.5rem;
+}
+
+
+.author {
+    position: absolute;
+    bottom: 55px;
+    /* Distance from bottom edge */
+    right: 20px;
+    /* Distance from right edge */
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 1rem;
+    text-align: center;
+    color: #2E1C12 !important;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.messageBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    position: relative;
+    height: 50vh;
+}
+
+.messageText {
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+body[data-lang="en"] .messageText {
+    font-size: 1.5rem;
+}
+
+.author-me {
+    position: absolute;
+    bottom: 55px;
+    /* Distance from bottom edge */
+    right: 20px;
+    /* Distance from right edge */
+    font-family: 'MyCustomFont1';
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #2E1C12;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+#resetBtn {
+    display: block;
+    margin: 30px auto 10px auto;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid #5A3E6D;
+    border-radius: 10px;
+    font-family: 'MyCustomFont1';
+    color: #3A2E4C;
+    word-spacing: 6px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#resetBtn:hover {
+    transform: scale(1.02);
+    background: linear-gradient(180deg, #be8e456d 0%, #be8e456d 100%);
+    border: 2px solid #5E503A;
+    font-weight: 900;
+    color: #492d00;
+}
+
+/* Ensure .hidden overrides ID specificity and flex rules */
+.hidden {
+    display: none !important;
+}
+
+/* Fade Transitions */
+.transition-fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+}
+
+.transition-fade-in {
+    animation: fadeIn 0.7s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablets & Mobile Devices (<= 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        /* Prevents iOS Safari background scroll bugs */
+        background-attachment: scroll;
+        padding: 4rem 1rem 2rem 1rem;
+    }
+
+    /* Language Switcher */
+    .lang-container {
+        top: 12px;
+        right: 12px;
+    }
+
+    #langSwitcher {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+    }
+
+    /* Typography Adjustments */
+    .title,
+    .sub-title {
+        font-size: 1.8rem;
+    }
+
+    body[data-lang="en"] .title,
+    body[data-lang="en"] .sub-title {
+        font-size: 1.4rem;
+    }
+
+    .span-text {
+        font-size: 1.3rem;
+    }
+
+    body[data-lang="en"] .span-text {
+        font-size: 1.05rem;
+    }
+
+    /* Layout & Button Adjustments */
+    .cardBox {
+        margin-top: 4vh;
+    }
+
+    #cardBtn {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 160px;
+        height: 55px;
+        margin-top: 20px;
+        color: #1A0F0A;
+        background: linear-gradient(180deg, #be8e456d 0%, #be8e456d 100%);
+    }
+
+    .btnText {
+        font-size: 1.3rem;
+    }
+
+    body[data-lang="en"] .btnText {
+        font-size: 1.05rem;
+    }
+
+    /* Swiper Cards */
+    .quoteCard.swiper {
+        width: 95vw !important;
+        max-width: 100% !important;
+        margin-top: 4vh;
+    }
+
+    .quote.swiper-slide {
+        min-height: 480px;
+        padding: 24px 20px 45px 20px;
+    }
+
+    .quote-text {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        padding: 0;
+    }
+
+    body[data-lang="en"] .quote-text {
+        font-size: 1.15rem;
+    }
+
+    .author {
+        bottom: 40px;
+        right: 16px;
+        font-size: 1rem !important;
+    }
+
+    /* Message Box */
+    .messageBox {
+        height: auto;
+        min-height: 30vh;
+        padding: 20px 10px;
+    }
+
+    .messageText {
+        font-size: 1.4rem;
+        margin-bottom: 5vh;
+    }
+
+    body[data-lang="en"] .messageText {
+        font-size: 1.1rem;
+    }
+
+    #resetBtn {
+        font-size: 1.2rem;
+        padding: 8px 20px;
+        margin-top: 20px;
+    }
+
+    /* Make the entire quote card container dead to all touch/swipe events */
+    .quoteCard,
+    .quoteCard .swiper-wrapper,
+    .quote.swiper-slide {
+        pointer-events: none !important;
+        touch-action: pan-y !important;
+        /* Forces normal vertical page scrolling */
+    }
+
+    /* Keep ONLY the navigation arrows and pagination dots interactive */
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
+        pointer-events: auto !important;
+    }
+}
+
+/* Small Mobile Phones (<= 480px) */
+/* @media screen and (max-width: 480px) {
+    .title,
+    .sub-title {
+        font-size: 1.5rem;
+    }
+
+    body[data-lang="en"] .title,
+    body[data-lang="en"] .sub-title {
+        font-size: 1.2rem;
+    }
+
+    .span-text {
+        font-size: 1.1rem;
+    }
+
+    body[data-lang="en"] .span-text {
+        font-size: 0.95rem;
+    }
+
+    .quote.swiper-slide {
+        min-height: 440px;
+        padding: 20px 16px 45px 16px;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    body[data-lang="en"] .quote-text {
+        font-size: 1rem;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+} */

@@ -17,7 +17,7 @@ const translations = {
         "btn_reset": "ပြန်စရန်",
 
         "message_text": "မမြင်နိုင်သောအနာဂတ်ကို ရှုမျှော်ခြင်းသည် ဒုက္ခသာမည်၏ <br> မြင်မက်ဆုံမက်ခဲ့သော အတိတ်ကို လွမ်းဆွတ်ခြင်းသည်လည်း ဒုက္ခသာမည်သည်။",
-        "message_author": "ကံ့ကော်မောင်",
+        "message_author": "# ကံ့ကော်မောင်",
 
         "quote1_text": "သံသရာလမ်းဘုံဘဝ ကွန်းထောက်တစ်စခန်းမှာ <br> ရေစက်အဟုန်ကြောင့်​ ခိုင်နှင့် မောင်ပြန်တွေ့ဆုံလျှင် မောင့်ကို ခွင့်လွှတ်နိုင်ပါစေ ခိုင် ...။ ။",
         "quote1_author": "# တက္ကသိုလ်ဘုန်းနိုင် <br> # သူငယ်ချင်းလို့ဆက်၍ခေါ်မည်ခိုင်",
@@ -58,7 +58,7 @@ const translations = {
         "btn_reset": "Start Anew",
 
         "message_text": "Gazing into an unseen future brings nothing but sorrow; <br> Longing for a past we once dreamed and shared is sorrow all the same.",
-        "message_author": "KantKaw Maung",
+        "message_author": "# KantKaw Maung",
 
         "quote1_text": "If, by the pull of karmic destiny, you and I should cross paths again at a resting stop along this endless cycle of rebirth, may you find it in your heart to forgive me, Khine...",
         "quote1_author": "# Tekkatho Bhone Naing <br> # I Shall Continue to Call You Friend, Khine",
